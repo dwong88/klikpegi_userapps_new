@@ -1,0 +1,122 @@
+<!--
+  Generated template for the SearchResults page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="cls-search-rest" [ngClass]="searchModeClass">
+  <ion-toolbar>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="dismissModal()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      <span style="font-size:1.5rem">
+        {{ destination || "NEARBY" | translate }}
+        <br>
+        <span *ngIf="searchParams.mode == 0" style="font-weight:400">{{searchDate | date:'d MMM y'}} • {{duration}} {{"HOUR(S)" | translate}}</span>
+        <span *ngIf="searchParams.mode == 1" style="font-weight:400">{{searchDate | date:'d MMM y'}} • 24 {{"HOURS" | translate}}</span>
+        <span *ngIf="searchParams.mode == 2" style="font-weight:400">{{searchDate | date:'d MMM y'}} • {{duration}} {{"NIGHT(S)" | translate}}</span>
+      </span>
+    </ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="presentPopover($event)">
+        <ion-icon name="md-more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar class="extra-header">
+    <ion-title no-padding class="custom-header">
+      <span class="text-tax">
+        {{"PRICING_NOTICE" | translate }}
+      </span>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+  <!-- <ion-row *ngIf="isEmpty">
+    <ion-col text-center>
+      No search results, please try again
+    </ion-col>
+  </ion-row> -->
+  <ion-card no-margin class="my-card" sty tappable *ngFor="let room of roomList" (click)="showPropertyDetail(room)">
+    <ion-slides pager="true" style="height:180px">
+      <!--<ion-slide style="width:100vw;object-fit:cover">-->
+        <!--<img src={{room.thumbnail}} />-->
+      <!--</ion-slide>-->
+      <!-- <ion-slide *ngIf="room.gallery == undefined">
+          <img src="assets/images/Placeholder.png">
+        </ion-slide> -->
+      <ng-container *ngIf="room.gallery !== undefined">
+        <ion-slide *ngFor="let image of room.gallery">
+          <img src={{image._url}}>
+        </ion-slide>
+      </ng-container>
+    </ion-slides>
+    <ion-card-content padding-horizontal style="line-height:1">
+      <ion-row>
+        <ion-col class="text-title">
+          {{room.name}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="text-content">
+          {{room.addressRegion || "LOADING" | translate}}
+        </ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col *ngIf="room.rating > 0">
+          <rating [(ngModel)]="room.rating" readOnly="true" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star"
+            nullable="false">
+          </rating>
+        </ion-col>
+        <ion-col text-right>
+          <s class="text-content" *ngIf="searchParams.mode == 0 && room.discountRate > 0">{{currencySymbol}} {{room.transitStartFrom | number:'1.0-0'}}</s>
+          <s class="text-content" *ngIf="searchParams.mode == 1 && room.startDiscount > 0">{{currencySymbol}} {{room.price24StartFrom | number:'1.0-0'}}</s>
+          <s class="text-content" *ngIf="searchParams.mode == 2 && room.startDiscount > 0">{{currencySymbol}} {{room.startFrom | number:'1.0-0'}}</s>
+        </ion-col>
+      </ion-row>
+      <!-- <div *ngIf="roomDetail.discountRate > 0">
+        <s>{{roomDetail.priceList[roomDetail.duration - 1].price | number:'1.0-0'}}</s>
+        <b> {{roomDetail.discountRate}}% OFF</b>
+      </div> -->
+
+      <ion-row align-items-center>
+        <ion-col>
+          <ion-icon name="ios-pin-outline" item-start style="margin:0;color:rgb(105,105,105)"></ion-icon>
+          <span class="text-content"> {{room.distance}} km </span>
+        </ion-col>
+        <ion-col text-right>
+          <span class="text-price" *ngIf="searchParams.mode == 0">{{currencySymbol}} {{room.transitStartFrom * ((100 - room.discountRate) / 100) | number:'1.0-0'}}</span>
+          <span class="text-price" *ngIf="searchParams.mode == 1">{{currencySymbol}} {{room.price24StartFrom * ((100 - room.startDiscount) / 100) | number:'1.0-0'}}</span>
+          <span class="text-price" *ngIf="searchParams.mode == 2">{{currencySymbol}} {{room.startFrom * ((100 - room.startDiscount) / 100) | number:'1.0-0'}}</span>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+    <div class="separator-with-shadow">
+
+    </div>
+  </ion-card>
+
+  <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col style="padding-left:0px">
+        <div style="border-left: 1px solid #d8d8d8">
+          <button ion-button icon-left block clear (click)="showMap()">
+            <ion-icon name="map"></ion-icon>
+            {{"MAP" | translate }}
+          </button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

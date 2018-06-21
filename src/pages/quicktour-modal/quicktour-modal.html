@@ -1,0 +1,31 @@
+<!--
+  Generated template for the QuicktourModal page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header transparent>
+  <ion-toolbar text-right style="background:transparent !important">
+    <button ion-button clear icon-only (click)="dismissModal()">
+      <ion-icon name="close"></ion-icon>
+    </button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-slides pager>
+
+  <ion-slide *ngFor="let image of introBgImg" [ngClass]="image" style="background-repeat:no-repeat;background-size:cover">
+    &nbsp;
+  </ion-slide>
+
+</ion-slides>
+
+<!--<ion-content>-->
+  <!--<ion-slides pager="true">-->
+    <!--<ion-slide *ngFor="let image of images">-->
+      <!--<div>-->
+        <!--<img src="{{image.url}}">-->
+      <!--</div>-->
+    <!--</ion-slide>-->
+  <!--</ion-slides>-->
+<!--</ion-content>-->

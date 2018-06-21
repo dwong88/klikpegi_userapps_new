@@ -1,0 +1,130 @@
+<!--
+  Generated template for the PaymentConfirmationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="cls-search-rest" [ngClass]="searchModeClass">
+
+    <ion-navbar>
+        <ion-title>{{"CREDIT_CARD" | translate}}</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="presentPopover($event)">
+                <ion-icon name="md-more"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+    <ion-toolbar class="extra-header">
+        <ion-title no-padding class="custom-header">
+      <span class="text-tax">
+        {{"PRICING_NOTICE" | translate }}
+      </span>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="cls-bck-grey">
+    <div padding class="text-header">
+        {{"PRICE_DETAILS" | translate}}
+    </div>
+
+    <ion-grid padding class="realcolor">
+        <ion-row class="catch-eye">
+            <ion-col>
+                {{bookingData.propName}}
+            </ion-col>
+            <ion-col text-right>
+                <span *ngIf="bookingData.mode == 0">{{currencySymbol}} {{transitPrice * bookingData.roomQty | number:'1.0-0'}}</span>
+                <span *ngIf="bookingData.mode == 1">{{currencySymbol}} {{hour24Price * bookingData.roomQty | number:'1.0-0'}}</span>
+                <span *ngIf="bookingData.mode == 2">{{currencySymbol}} {{nightPrice * bookingData.roomQty | number:'1.0-0'}}</span>
+            </ion-col>
+        </ion-row>
+        <ion-row class="catch-eye">
+            <ion-col>
+                {{"UNIQUE_CODE" | translate}}
+            </ion-col>
+            <ion-col text-right>
+                - {{bookingData.uniqueCode}}
+            </ion-col>
+        </ion-row>
+
+        <ion-row class="catch-eye">
+            <ion-col>
+                {{"TOTAL_PRICE" | translate}}
+            </ion-col>
+            <ion-col text-right>
+                <span *ngIf="bookingData.mode == 0" class="text-price">{{currencySymbol}} {{transitPrice * bookingData.roomQty - bookingData.uniqueCode | number:'1.0-0'}}</span>
+                <span *ngIf="bookingData.mode == 1" class="text-price">{{currencySymbol}} {{hour24Price * bookingData.roomQty - bookingData.uniqueCode | number:'1.0-0'}}</span>
+                <span *ngIf="bookingData.mode == 2" class="text-price">{{currencySymbol}} {{nightPrice * bookingData.roomQty - bookingData.uniqueCode | number:'1.0-0'}}</span>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <div class="separator-with-shadow">
+
+    </div>
+
+    <form [formGroup]="paymentForm">
+        <ion-grid padding>
+            <ion-row>
+                <ion-col>
+                    <ion-input type="number" formControlName="cc_no" [(ngModel)]="cc_no" placeholder="{{'CREDIT_CARD_NUMBER' | translate}}"></ion-input>
+                    <div *ngIf="!paymentForm.controls.cc_no.valid && paymentForm.controls.cc_no.dirty" class="div-error-msg">
+                        <p>{{"INVALID_CREDIT_CARD_NO" | translate}}</p>
+                    </div>
+                </ion-col>
+                <ion-col col-3 text-right style="padding-top: 20px;">
+                    <img class="payment-icon" src="assets/images/payment/visa.png" />&nbsp;
+                    <img class="payment-icon" src="assets/images/payment/mastercard.png" />
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-input type="text" formControlName="cc_name" [(ngModel)]="cc_name" placeholder="{{'CREDIT_CARD_NAME' | translate}}"></ion-input>
+                    <div *ngIf="!paymentForm.controls.cc_name.valid && paymentForm.controls.cc_name.dirty" class="div-error-msg">
+                        <p>{{"INVALID_NAME" | translate}}</p>
+                    </div>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col>
+                    <ion-input type="text" formControlName="cc_valid_until" [(ngModel)]="cc_valid_until" placeholder="{{'VALID_UNTIL' | translate}}"></ion-input>
+                    <div *ngIf="!paymentForm.controls.cc_valid_until.valid && paymentForm.controls.cc_valid_until.dirty" class="div-error-msg">
+                        <p>{{"INVALID_VALID_UNTIL" | translate}}</p>
+                    </div>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col>
+                    <ion-input type="password" formControlName="cc_cvv" [(ngModel)]="cc_cvv" placeholder="{{'CVV3' | translate}}"></ion-input>
+                    <div *ngIf="!paymentForm.controls.cc_cvv.valid && paymentForm.controls.cc_cvv.dirty" class="div-error-msg">
+                        <p>{{"INVALID_CVV3" | translate}}</p>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
+    <div class="separator-with-shadow">
+
+    </div>
+</ion-content>
+
+<ion-footer padding-horizontal [ngClass]="searchModeClass">
+    <ion-row align-items-center>
+        <!--<ion-col text-justify class="text-content">-->
+        <!--{{"YOU_NEED_TO_PAY" | translate}}-->
+        <!--<br/>-->
+        <!--<span class="text-price" *ngIf="bookingData.mode == 0">{{transitPrice * bookingData.roomQty - uniqueDigit| number:'1.0-0'}}</span>-->
+        <!--<span class="text-price" *ngIf="bookingData.mode == 1">{{hour24Price * bookingData.roomQty - uniqueDigit| number:'1.0-0'}}</span>-->
+        <!--<span class="text-price" *ngIf="bookingData.mode == 2">{{nightPrice * bookingData.roomQty - uniqueDigit| number:'1.0-0'}}</span>-->
+        <!--</ion-col>-->
+        <!--<ion-col>-->
+        <!--<button ion-button block (click)="bookRoom()">OK</button>-->
+        <!--</ion-col>-->
+        <ion-col>
+            <button ion-button block (click)="bookRoom()">{{"PAY_NOW" | translate}}</button>
+        </ion-col>
+    </ion-row>
+</ion-footer>

@@ -1,0 +1,49 @@
+Untuk build android:
+> ionic cordova platform rm android
+> ionic cordova platform add android@6.4.0
+> ionic cordova build android --release
+> cd ../klikpegiAndroidKey
+> jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ./com.klikpegi.keystore ./../klikpegi/platforms/android/build/outputs/apk/release/android-release-unsigned.apk klikpegicomalias
+> cd ./../klikpegi/platforms/android/build/outputs/apk/release
+> ~/Library/Android/sdk/build-tools/27.0.3/zipalign -v 4 ./android-release-unsigned.apk G-hours.apk
+
+
+
+keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore -list -v
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ~/.android/debug.keystore unsignedapk.apk androiddebugkey
+
+mongodump --host ds137730.mlab.com --port 37730 --username dev --password "go2dev" --out /Users/wiyantotan/Development/ghoursusr/mongodump-ghours-2017-12-15 --db gbidev
+
+>>> https://ionicframework.com/docs/v1/guide/publishing.html
+
+Harus baca ini dulu:
+https://stackoverflow.com/questions/36198165/failed-to-find-android-home-environment-variable
+
+HARUS INSTALL ANDROID STUDIO dulu.
+> https://developer.android.com/studio/install.html
+> jalanin Android Studio untuk instal package
+> sudo chmod 755 /Applications/Android\ Studio.app/Contents/gradle/gradle-2.2.1/bin/gradle
+> /Users/wiyantotan/Library/Android/sdk/tools/bin/sdkmanager --licenses
+
+> jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore /Users/wiyantotan/Dropbox/Ghours/android_keystore/id.g-hours.keystore /Users/wiyantotan/Development/ghours/klikpegi/platforms/android/build/outputs/apk/android-release-unsigned.apk ghoursprodkey
+
+
+Build Android:
+- Rubah config.xml jadi id.ghours.userapp
+- make sure java version > 1.8
+    - /usr/libexec/java_home -V
+    - export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_152`
+- ionic cordova build --release android
+- Generate keystore : keytool -genkey -v -keystore ghours-release.keystore -alias ghoursreleasealias -keyalg RSA -keysize 2048 -validity 10000
+- keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore -list -v
+- jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ~/.android/debug.keystore /Users/wiyantotan/Development/ghours/klikpegi/platforms/android/build/outputs/apk/android-release-unsigned.apk androiddebugkey
+- passpharse: android
+- cd /Users/wiyantotan/Development/ghours/klikpegi/platforms/android/build/outputs/apk
+- ~/Library/Android/sdk/build-tools/27.0.1/zipalign -v 4 ./android-release-unsigned.apk G-hours.apk
+
+
+cordova-plugin-wkwebview-engine
+
+ionic cordova plugin rm cordova-plugin-wkwebview-engine
+ionic cordova plugin add https://github.com/ionic-team/cordova-plugin-wkwebview-engine.git --save
+

@@ -1,0 +1,100 @@
+page-my-bookings-detail {
+  .text {
+    &-title {
+      font-size: 1.6rem;
+      color: rgb(74,74,74);
+    }
+
+    &-label {
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    &-subtitle {
+      font-size: 1rem;
+      color: rgb(127,127,127);
+    }
+
+    &-content {
+      font-size: 1.4rem;
+      color: rgb(74,74,74);
+    }
+
+    &-subcontent {
+      font-size: 1.2rem;
+      color: rgb(74,74,74);
+    }
+
+    &-big-price {
+      font-size: 2rem;
+      color: rgb(74,74,74);
+      font-weight: 500;
+    }
+
+    &-price {
+      font-size: 1.6rem;
+      font-weight: 500;
+    }
+
+    &-warning {
+      font-size: 1.2rem;
+      color: rgb(255,255,255);
+    }
+
+    &-digit-price {
+      color: rgb(19,112,221);
+      margin-left: -5px !important;
+    }
+
+    &-header {
+      font-size: 1rem;
+      color: rgb(105,105,105);
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    &-reminder {
+      font-size: 1.2rem;
+      color: rgb(189, 0, 23);
+      text-transform: none;
+    }
+  }
+
+  .separator {
+    background-color: rgb(234,234,234);
+    height: 8px;
+  }
+
+  .item {
+    padding-left: 0 !important;
+  }
+
+  .custom-chip-important {
+    border-radius: 4px;
+    width: 100%;
+  }
+
+  .custom-chip{
+    background: transparent;
+    height: 2rem;
+    line-height: 2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    &-waiting{
+      color: #387ef5;
+      border: 1px solid #387ef5;
+    }
+    &-checking{
+      color: #f6a623;
+      border: 1px solid #f6a623;
+    }
+    &-accepted{
+      color: #63b707;
+      border: 1px solid #63b707;
+    }
+    &-expired{
+      color: #BA0505;
+      border: 1px solid #BA0505;
+    }
+  }
+}

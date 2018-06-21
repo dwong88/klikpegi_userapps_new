@@ -1,0 +1,83 @@
+<!--
+  Generated template for the SearchPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>klikpegi.com</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentPopover($event)">
+        <ion-icon name="md-more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-list ion-fixed no-lines style="width:100%;height:102%">
+    <!--<button ion-item text-center style="height:33%;background: url('/../../assets/images/gbi-logo.png');background-size: cover">-->
+    <button text-left ion-item style="height:33%;background-image:url('assets/images/background-image/type1.jpg');background-size:cover;background-repeat:no-repeat"
+      (click)="showSearchPage(0)">
+      <div text-right>
+      <span ion-text class="text text-title">{{"TRANSIT" | translate}}</span>
+      </div>
+
+      <div class="isnarrow">
+        <span ion-text class="text text-description" [innerHTML]="'SEARCHPAGE.TRANSIT_SUBTITLE' | translate"></span>
+      </div>
+    </button>
+    <button text-left ion-item style="height:33%;background-image:url('assets/images/background-image/type2.jpg');background-size:cover;background-repeat:no-repeat"
+      (click)="showSearchPage(2)">
+      <div text-right>
+      <span ion-text class="text text-title">{{"1-NIGHT" | translate}}</span>
+      </div>
+
+      <div class="isnarrow">
+        <div style="width: 92%;">
+          <div style="width: 70%;" ion-text class="text text-description" [innerHTML]="'SEARCHPAGE.1_NIGHT_SUBTITLE_1' | translate">
+          </div>
+          <div style="width: 30%;" ion-text class="text text-description" [innerHTML]="'SEARCHPAGE.1_NIGHT_SUBTITLE_2' | translate">
+          </div>
+          <div style="width: 70%;" ion-text class="text text-description" [innerHTML]="'SEARCHPAGE.1_NIGHT_SUBTITLE_3' | translate">
+          </div>
+          <div style="width: 30%;" ion-text class="text text-description" [innerHTML]="'SEARCHPAGE.1_NIGHT_SUBTITLE_4' | translate">
+          </div>
+        </div>
+      </div>
+    </button>
+    <button text-left ion-item style="height:33%;background-image:url('assets/images/background-image/type3.jpg');background-size:cover;background-repeat:no-repeat"
+      (click)="showSearchPage(1)">
+      <div text-right>
+      <span ion-text class="text text-title">{{"24-HOURS" | translate}}</span>
+      </div>
+
+      <div class="isnarrow">
+      <span ion-text class="text text-description" [innerHTML]="'SEARCHPAGE.24-HOURS_SUBTITLE_1' | translate"></span>
+        <br />
+        <span ion-text class="text text-description" style="font-size: 1.8rem;" [innerHTML]="'SEARCHPAGE.24-HOURS_SUBTITLE_2' | translate"></span>
+      </div>
+    </button>
+  </ion-list>
+  <!--<ion-grid no-padding>-->
+
+  <!--<ion-row style="background-color: #e74c3c;">-->
+  <!--<ion-col>Transit</ion-col>-->
+  <!--</ion-row>-->
+
+  <!--<ion-row style="background-color: #f1c40f;">-->
+  <!--<ion-col>24 Hours</ion-col>-->
+  <!--</ion-row>-->
+
+  <!--<ion-row style="background-color: #9b59b6;">-->
+  <!--<ion-col>1 Night</ion-col>-->
+  <!--</ion-row>-->
+
+  <!--</ion-grid>-->
+</ion-content>

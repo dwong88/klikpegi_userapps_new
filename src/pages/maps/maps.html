@@ -1,0 +1,73 @@
+<!--
+  Generated template for the MapsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="klikpegihead">
+  <ion-navbar>
+    <ion-title>
+      {{"MAP" | translate}}
+    </ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="presentPopover($event)">
+        <ion-icon name="md-more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <div #pleaseConnect id="please-connect">
+    <p>Please connect to the Internet...</p>
+  </div>
+
+  <div #map id="map"></div>
+
+  <div *ngIf="showInfo" (click)="showDetail()">
+    <ion-row class="info-window">
+      <ion-col col-3>
+        <img style="object-fit:cover;height:100%" [src]="propertyDetail.thumbnail" />
+      </ion-col>
+      <ion-col>
+        <ion-row>
+          <ion-col class="text-title">
+            {{propertyDetail.name}}
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="text-content">
+            {{propertyDetail.addressRegion}}
+          </ion-col>
+        </ion-row>
+        <ion-row align-items-center>
+          <ion-col>
+            <rating [(ngModel)]="propertyDetail.rating" readOnly="true" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half"
+              starIconName="star" nullable="false">
+            </rating>
+          </ion-col>
+        </ion-row>
+
+        <ion-row align-items-center>
+          <ion-col>
+            <ion-icon name="ios-pin-outline" item-start style="margin:0;color:rgb(105,105,105)"></ion-icon>
+            <span class="text-content"> {{propertyDetail.distance}} km </span>
+          </ion-col>
+        </ion-row>
+
+        <ion-row align-items-center>
+          <ion-col>
+            <span class="text-content"> {{currencySymbol}} {{propertyDetail.startFrom | number:'1.0-0'}}</span>
+          </ion-col>
+        </ion-row>
+
+        <!-- <span class="text-title">{{propertyDetail.name}}</span><br />
+        <span class="text-content">{{propertyDetail.addressRegion}}</span><br />
+        <span class="text-content">{{propertyDetail.distance}} km</span><br />
+        <span class="text-price">{{propertyDetail.startFrom | number:'1.0-0'}}</span> -->
+      </ion-col>
+    </ion-row>
+  </div>
+
+</ion-content>

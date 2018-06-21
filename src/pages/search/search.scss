@@ -1,0 +1,41 @@
+page-search {
+    scroll-content {
+        display: flex;
+        flex-direction: column;
+    }
+    ion-grid {
+        padding: 0;
+        height: 100%;
+    }
+    ion-row {
+        flex: 1;
+    }
+    ion-label{
+        .isnarrow {
+            max-width: 80vw;
+            padding-left: 16px;
+            font-weight: normal;
+            & > div > div {
+                float: left;
+            }
+        }
+        white-space: normal;
+    }
+    .input-wrapper {
+        font-weight: bold;
+    }
+    .text {
+        color: rgb(255, 255, 255);
+        &-title {
+            font-size: 4.8rem;
+        }
+        &-description {
+            font-size: 1.7rem;
+        }
+    }
+
+    button.item-ios:not([detail-none]) .item-inner {
+        background-image: none;
+        padding-right: 16px;
+    }
+}

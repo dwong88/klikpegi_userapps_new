@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "893535746",
+    "firebase_url": "https://klikpegi-200207.firebaseio.com",
+    "project_id": "klikpegi-200207",
+    "storage_bucket": "klikpegi-200207.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:893535746:android:312e86f6f6707303",
+        "android_client_info": {
+          "package_name": "com.klikpegi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "893535746-sn72vimijokkcl28to64agqaqug1lg6m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.klikpegi",
+            "certificate_hash": "ff9c2a7b921149265752598aa1b745bb3c85f1e2"
+          }
+        },
+        {
+          "client_id": "893535746-2t3787af7pl2g8vfdof99gje0jal2133.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2OINcxkRhhDTnftZZFMZXm1Sci6Hzdis"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "893535746-8hhb27fij4d2b9v5mseit8cof71hk688.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.klikpegi",
+                "app_store_id": "1367923507"
+              }
+            },
+            {
+              "client_id": "893535746-2t3787af7pl2g8vfdof99gje0jal2133.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,667 @@
+// http://ionicframework.com/docs/v2/theming/
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+@import "../../node_modules/ionic2-auto-complete/auto-complete";
+@font-face {
+  font-family: "Century Gothic";
+  src: url("../assets/fonts/century-gothic/CenturyGothic.ttf");
+  font-style: normal;
+}
+@font-face {
+  font-family: "Century Gothic";
+  src: url("../assets/fonts/century-gothic/GOTHICB.TTF");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Century Gothic";
+  src: url("../assets/fonts/century-gothic/GOTHICI.TTF");
+  font-style: italic;
+}
+@font-face {
+  font-family: "Century Gothic";
+  src: url("../assets/fonts/century-gothic/GOTHICI.TTF");
+  font-style: oblique;
+}
+@font-face {
+  font-family: "Century Gothic";
+  src: url("../assets/fonts/century-gothic/GOTHICBI.TTF");
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Century Gothic";
+  src: url("../assets/fonts/century-gothic/GOTHICBI.TTF");
+  font-weight: bold;
+  font-style: oblique;
+}
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../assets/fonts/facebook/icomoon.eot?xq55wh');
+  src:  url('../assets/fonts/facebook/icomoon.eot?xq55wh#iefix') format('embedded-opentype'),
+  url('../assets/fonts/facebook/icomoon.ttf?xq55wh') format('truetype'),
+  url('../assets/fonts/facebook/icomoon.woff?xq55wh') format('woff'),
+  url('../assets/fonts/facebook/icomoon.svg?xq55wh#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon-facebook4:before {
+  content: "\e901";
+}
+.icon-facebook3:before {
+  content: "\e900";
+  color: #3b5998;
+}
+.ion-logo-facebook:before {
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  content: "\ea90";
+  font-size: 1.2em;
+}
+.ion-logo-google:before {
+  font-size: 1.2em;
+}
+.icon-facebook2:before {
+  content: "\ea91";
+}
+
+
+$mode0-color: #00AEEF; // 00AEEF
+$mode1-color: #D71B4B; //DD1336
+$mode2-color: #00447C; // #EEAC2F
+$price-color: #e1324f;
+$klikpegi-bg-color: #00447C;
+$klikpegi-btn-process: #FFA301;
+
+//ion-app [padding-horizontal]
+//{
+//  padding: 0px 24px !important;
+//}
+//
+//ion-app [padding]
+//{
+//  padding: 16px 24px !important;
+//}
+
+* {
+  font-family: 'Century Gothic';
+}
+
+// Untuk di page Login
+#loginForm, #signUpForm {
+  ion-item {
+    background-color: $klikpegi-bg-color;
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: rgb(0, 150, 199);
+      opacity: 1; /* Firefox */
+    }
+    color: #00bbff;
+  }
+}
+
+ion-header.klikpegihead ion-icon.back-button-icon.icon {
+  color: white;
+}
+
+ion-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0 90px 1px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  z-index: -1;
+  span {
+    color: white;
+  }
+}
+//ion-segment {
+//  &.segment ion-segment-button.segment-button {
+//    color: white;
+//  }
+//}
+
+ion-header {
+  color: white;
+  padding-top: 10px;
+  @media (max-width: 375px) and (max-height: 812px) {
+    padding-top: 43px;
+  }
+  @media (max-width: 414px) and (max-height: 736px) {
+    padding-top: 10px;
+  }
+  ion-buttons[end], ion-buttons[right], ion-buttons[left] {
+    button {
+      color: white;
+    }
+  }
+  .toolbar-background {
+    background: none !important;
+    border-color: transparent;
+  }
+  ion-title {
+    .toolbar-title {
+      color: white;
+    }
+  }
+}
+.klikpegihead {
+  background-color: $klikpegi-bg-color;
+  color: white;
+}
+
+ion-tabs .tabbar {
+  a.tab-button {
+    @media (max-width: 375px) and (max-height: 812px) {
+      margin-bottom: 20px;
+    }
+    @media (max-width: 414px) and (max-height: 736px) {
+      margin-bottom: 0px;
+    }
+  }
+}
+
+#loginForm, #signUpForm {
+  .item-ios {
+    padding-left: 0px;
+  }
+}
+
+div.toggle-show-less {
+  border-top: 1px solid #888;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 5px;
+  span {
+    display: block;
+    padding-top: 8px;
+    font-weight: bold;
+  }
+}
+
+.no-scroll .scroll-content{
+  overflow: hidden;
+}
+
+ion-item.item {
+  font-size: 1.6rem;
+}
+
+button[ion-button] {
+  height: 2.2em;
+}
+
+.text {
+  &-price, &-other, &-discperc {
+    color: $price-color;
+  }
+  &-hello-dark {
+    font-size: 2.3rem;
+    font-weight: 400;
+    color: white;
+    &.darkcolor {
+      color: white;
+    }
+  }
+  &-hello-dark-real {
+    font-size: 2.3rem;
+    font-weight: 400;
+    color: black;
+    &.darkcolor {
+      color: black;
+    }
+  }
+  &-content-light {
+    font-size: 1.3rem;
+    text-align: center;
+    &.header-greet {
+      color: white;
+      line-height: 2em;
+      &.darkcolor {
+        color: white;
+        line-height: 1.4em;
+        &-real {
+          color: black;
+        }
+      }
+    }
+  }
+  &-subcontent-large {
+    font-size: 1.9rem;
+    text-align: left;
+    color: white;
+    text-transform: uppercase;
+  }
+}
+.txt-login-helper [ion-button] {
+  margin: 0px;
+  height: 1.5em;
+}
+.custom-badge{
+  border-radius: 16px;
+  background: transparent;
+  height: 2rem;
+  line-height: 1.3rem;
+  font-size: 1rem;
+  font-weight: 500;
+  .count-down {
+    .digital{
+      color:#387ef5;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .hand{
+      margin: 0px;
+    }
+  }
+
+  &-waiting{
+    color: #387ef5;
+    border: 1px solid #387ef5;
+  }
+  &-checking{
+    color: #f6a623;
+    border: 1px solid #f6a623;
+  }
+  &-accepted{
+    color: #63b707;
+    border: 1px solid #63b707;
+  }
+  &-expired{
+    color: #BA0505;
+    border: 1px solid #BA0505;
+    .count-down {
+      .digital{
+        color:#BA0505;
+        font-size: 1rem;
+        font-weight: 600;
+      }
+    }
+  }
+  &-type{
+    text-transform: uppercase;
+    background: rgb(234,234,234);
+    color: rgb(127,127,127);
+  }
+}
+
+
+
+.header-md::after {
+  height: 0px !important;
+}
+
+ion-row {
+  &.row.no-padding > .col {
+    padding: 0px;
+  }
+
+  &.catch-eye {
+    min-height: 44px;
+    border-top: 0.55px solid transparent;
+    border-bottom: 0.55px solid rgba(0, 0, 0, 0.05);
+    padding-top: 5px;
+  }
+}
+
+ion-row, ion-list {
+  &.row-hello-prof[padding] {
+    @media (max-width: 375px) and (max-height: 812px) {
+      padding-top: 20px;
+    }
+    @media (max-width: 414px) and (max-height: 736px) {
+      padding-top: 16px;
+    }
+  }
+}
+
+.bgblueclr {
+  background-image: url('../assets/images/background-image/bgfullprof.jpg') !important;
+  background-size: 100%;
+  background-repeat: no-repeat;
+
+  @media (max-width: 375px) and (max-height: 812px) {
+    background-image: url('../assets/images/background-image/bgiphonexprof.jpg') !important;;
+    background-size: contain;
+  }
+
+  @media (max-width: 412px) and (max-height: 846px) {
+    background-image: url('../assets/images/background-image/bgiphonexprof.jpg') !important;;
+    background-size: 100%;
+  }
+
+  @media (max-width: 414px) and (max-height: 736px) {
+    background-image: url('../assets/images/background-image/rectangleprof.jpg') !important;;
+    background-size: contain;
+  }
+
+  @media (max-width: 412px) and (max-height: 660px) {
+    background-image: url('../assets/images/background-image/bgfullprof.jpg') !important;;
+    background-size: 100%;
+  }
+
+  @media (max-width: 360px) and (max-height: 740px) {
+    background-image: url('../assets/images/background-image/bgiphonexprof.jpg') !important;;
+    background-size: 100%;
+  }
+
+  @media (max-width: 360px) and (max-height: 640px) {
+    background-image: url('../assets/images/background-image/bgiphonexprof.jpg') !important;;
+    background-size: 100%;
+  }
+
+  ion-item.item {
+    background-color: transparent;
+  }
+}
+
+.ghours-logo {
+  background-size: 84px 84px;
+  height: 84px;
+  width: 84px;
+  border-style: none;
+  &-text {
+    background-size: 150px 41px;
+    height: 41px;
+    width: 150px;
+  }
+  &-full {
+    background-size: 180px 48px;
+    height: 65px;
+    width: 180px;
+  }
+}
+.imgfacebook {
+  background-image: url('../assets/images/fb_whitebg.png');
+  background-size: 16px 16px;
+  height: 16px;
+  width: 16px;
+}
+.imggoogle {
+  background-image: url('../assets/images/google_whitebg.png');
+  background-size: 16px 16px;
+  height: 16px;
+  width: 16px;
+}
+
+img.payment-icon {
+  height: 16px;
+  width: auto;
+}
+
+.separator-with-shadow {
+  height: 8px;
+  background-color: #eaeaea;
+  box-shadow: inset 0 2px 2px #bdbdbd;
+}
+
+.toolbar-background {
+  background: white !important;
+}
+
+.popover-content {
+  border-radius: 10px !important;
+  min-width: 90vw !important;
+  left: 5% !important;
+}
+
+.black-arrow .item-inner {
+  background-image: url("data:image/svg+xml;charset=utf-8,<svg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2012%2020'><path%20d='M2,20l-2-2l8-8L0,2l2-2l10,10L2,20z'%20fill='#757575'/></svg>") !important;
+}
+
+ion-header ion-icon.back-button-icon.icon {
+  color: map-get($colors, dark);
+}
+
+ion-icon {
+  &[class*="customicon-"] {
+    // Instead of using the font-based icons
+    // We're applying SVG masks
+    mask-size: contain;
+    mask-position: 50% 50%;
+    mask-repeat: no-repeat;
+    background: currentColor;
+    width: 1em;
+    height: 1em;
+  }
+  // custom icons
+  &[class*="customicon-booking"] {
+    mask-image: url(../assets/fonts/svg/booking.svg);
+  }
+  &[class*="customicon-inbox"] {
+    mask-image: url(../assets/fonts/svg/inbox.svg);
+  }
+  &[class*="customicon-promo"] {
+    mask-image: url(../assets/fonts/svg/promo.svg);
+  }
+  &[class*="customicon-profile"] {
+    mask-image: url(../assets/fonts/svg/profile.svg);
+  }
+}
+
+// ion-backdrop {
+//   opacity: 0.7;
+// }
+.backdropOpacity {
+  ion-backdrop {
+    opacity: 0.7 !important;
+  }
+}
+
+.button {
+  border-radius: 8px;
+}
+
+ion-header.g-search-mode0 {
+  background-color: $mode0-color;
+  .toolbar-background, ion-title {
+    background-color: $mode0-color !important;
+  }
+}
+ion-header.g-search-mode1 {
+  background-color: $mode1-color;
+  .toolbar-background, ion-title {
+    background-color: $mode1-color !important;
+  }
+}
+ion-header.g-search-mode2 {
+  background-color: $mode2-color;
+  .toolbar-background, ion-title {
+    background-color: $mode2-color !important;
+  }
+}
+
+ion-content {
+  color: white;
+  &.content {
+    color: white;
+  }
+  &.klikpegi-bg {
+    color: white;
+    background-color: $klikpegi-bg-color;
+  }
+  &.cls-search-mode0 {
+    background-color: $klikpegi-bg-color;
+    .cls-button-submit button {
+      background-color: $klikpegi-btn-process;
+    }
+    .cls-button-search button {
+      background-color: $mode0-color;
+    }
+  }
+  &.cls-search-mode1 {
+    background-color: $klikpegi-bg-color;
+    .cls-button-submit button {
+      background-color: $klikpegi-btn-process;
+    }
+    .cls-button-search button {
+      background-color: $mode0-color;
+    }
+  }
+  &.cls-search-mode2 {
+    background-color: $klikpegi-bg-color;
+    .cls-button-submit button {
+      background-color: $klikpegi-btn-process;
+    }
+    .cls-button-search button {
+      background-color: $mode0-color;
+    }
+  }
+  &.cls-bck-grey {
+    background-color: rgb(234,234,234);
+    ion-grid {
+      background-color: rgb(255,255,255);
+      &.realcolor {
+        color: black;
+      }
+    }
+  }
+}
+
+ion-content, ion-footer {
+  &.g-search-mode0 {
+    button {
+      background-color: $klikpegi-btn-process;
+      &.activated {
+        background-color: $klikpegi-btn-process;
+      }
+    }
+    .use-search-color {
+      color: $klikpegi-btn-process;
+    }
+  }
+
+  &.g-search-mode1 {
+    button {
+      background-color: $klikpegi-btn-process;
+      &.activated {
+        background-color: $klikpegi-btn-process;
+      }
+    }
+    .use-search-color {
+      color: $klikpegi-btn-process;
+    }
+  }
+
+  &.g-search-mode2 {
+    button {
+      background-color: $klikpegi-btn-process;
+      &.activated {
+        background-color: $klikpegi-btn-process;
+      }
+    }
+    .use-search-color {
+      color: $klikpegi-btn-process;
+    }
+  }
+}
+
+.toolbar ion-title {
+  padding: 0 10px 1px !important;
+}
+
+// biru : 00AEEF
+.cls-form-devider div.div-devider {
+  height: 1px;
+  background-color: #999999;
+}
+.btn-ghours, .cls-submit-form-login button[ion-button] {
+  background-color: #FFA301;
+  font-size: 1.9rem;
+  &.borderblue {
+    border: 2px solid #28C1FF;
+  }
+  &.bordergrey {
+    border: 2px solid #999999;
+  }
+  &.bgwhite {
+    background-color: white;
+    border: 2px solid #FFA301;
+    color: #FFA301;
+  }
+}
+
+ion-app.ios, ion-app.md {
+  [padding] {
+    padding: 16px 24px;
+  }
+  [padding-horizontal] {
+    padding: 0px 24px;
+  }
+}
+
+ul {
+  &.rating li {
+    padding: 0px 1px !important;
+    background: none;
+
+    color: #ffd600;
+    ion-icon {
+      font-size: 1.8rem;
+      &.ion-ios-star-outline {
+        color: transparent;
+      }
+    }
+  }
+}
+
+ion-header.cls-search-rest {
+  ion-title {
+    .toolbar-title {
+      color: white;
+    }
+  }
+
+  ion-buttons[end], ion-buttons[right], ion-buttons[left] {
+    button {
+      color: white;
+    }
+  }
+  ion-icon.back-button-icon.icon {
+    color: white;
+  }
+
+  ion-toolbar.extra-header {
+    background-color: white !important;
+    min-height: 25px;
+
+    .custom-header{
+      background-color: rgba(50, 50, 50, 0.3) !important;
+      white-space:pre-wrap;
+    }
+
+    .toolbar-title {
+      white-space: initial;
+      font-weight: normal;
+      margin-top: -7px !important;
+    }
+
+    .toolbar-background {
+      background-color: transparent !important;
+    }
+  }
+  .text-tax {
+    color: #404040 !important;
+    opacity: 1 !important;
+    font-size: 1rem !important;
+  }
+}

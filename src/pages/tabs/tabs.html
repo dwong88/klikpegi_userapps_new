@@ -1,0 +1,7 @@
+<ion-tabs [selectedIndex]="mySelectedIndex" #mainTabs>
+  <ion-tab [root]="homePage" tabTitle=" {{'SEARCH' | translate }}" tabIcon="search"></ion-tab>
+    <ion-tab [root]="promoPage" tabTitle=" {{'PROMO' | translate }}" tabIcon="customicon-promo"></ion-tab>
+  <ion-tab [root]="bookingsPage" tabTitle=" {{'BOOKINGS' | translate }}" tabIcon="calendar"></ion-tab>
+    <!--<ion-tab [root]="inboxPage" tabTitle=" {{'INBOX' | translate }}" tabIcon="mail"></ion-tab>-->
+  <ion-tab [root]="profilePage" tabTitle=" {{'PROFILE' | translate }}" tabIcon="contacts"></ion-tab>
+</ion-tabs>

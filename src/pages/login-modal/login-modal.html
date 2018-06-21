@@ -1,0 +1,82 @@
+<!--
+  Generated template for the Login page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{"LOG_IN" | translate}}</ion-title>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="dismissModal()" color="dark">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="klikpegi-bg">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <form (ngSubmit)="login('email');" id="loginForm">
+          <ion-item>
+            <ion-label floating>Email</ion-label>
+            <ion-input type="text" [(ngModel)]="model.username" name="username"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>{{"PASSWORD" | translate }}</ion-label>
+            <ion-input type="password" [(ngModel)]="model.password" name="password"></ion-input>
+          </ion-item>
+        </form>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col text-right>
+        <button ion-button clear color="dark" (click)="forgotPassword()" outline>{{"FORGOT_PASSWORD" | translate }}?</button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button ion-button type="submit" block form="loginForm">{{"LOG_IN" | translate }}</button>
+      </ion-col>
+    </ion-row>
+    <!-- <ion-row padding-horizontal padding-top text-center align-items-center>
+      <ion-col>
+        <div style="height: 1px; background-color:rgb(216,216,216)">
+
+        </div>
+      </ion-col>
+      <ion-col col-2 text-center class="text-subcontent-large">
+        {{"OR" | translate }}
+      </ion-col>
+      <ion-col>
+        <div style="height: 1px; background-color:rgb(216,216,216)">
+
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row padding-vertical>
+      <ion-col text-center class="text-content-light">
+        {{"LOG_IN_WITH" | translate }}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button ion-button block icon-left style="background-color:#3b5998" (click)="login('facebook')">
+          <ion-icon name="logo-facebook"></ion-icon>
+          Facebook
+        </button>
+      </ion-col>
+      <ion-col col-1></ion-col>
+      <ion-col>
+        <button ion-button block icon-left style="background-color:#dc4e41" (click)="login('google')">
+          <ion-icon name="logo-google"></ion-icon>
+          Google
+        </button>
+      </ion-col>
+    </ion-row> -->
+
+  </ion-grid>
+
+</ion-content>

@@ -1,0 +1,16 @@
+calendar-modal {
+  ion-calendar {
+    font-size: 1.3em;
+    .title .switch-btn {
+      font-size: 1em;
+    }
+    button.days-btn {
+      &.on-selected p {
+        font-size: 1.5em;
+      }
+      p {
+        font-size: 1.5em;
+      }
+    }
+  }
+}

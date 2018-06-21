@@ -1,0 +1,58 @@
+page-search-results-room-detail {
+  .text {
+    &-title { font-size: 1.8rem; color: rgb(74,74,74); }
+    &-subtitle { font-size: 1rem; color: rgb(127,127,127); }
+    &-content { font-size: 1.4rem; color: rgb(155,155,155); }
+    &-item-title { font-size: 1.4rem; color: rgb(74,74,74); }
+    &-item-subtitle { font-size: 1.2rem; color: rgb(139,139,139); }
+    &-item-description { font-size: 1.4rem; color: rgb(127,127,127); text-align: justify}
+    &-price { font-size: 1.8rem; font-weight:700;}
+    &-header { font-size: 1rem; color: rgb(105,105,105); text-transform: uppercase; font-weight:700;}
+    &-subheader { font-size: 1.2rem; color: rgb(74,74,74)}
+  }
+  ion-grid.clscontentgrid {
+    .item {
+      padding-left: 0px !important;
+    }
+  }
+
+  .separator {
+    height: 8px;
+  	background-color: #eaeaea;
+  	box-shadow: inset 0 2px 2px #bdbdbd;
+  }
+
+  .div-separator {
+    border-bottom : 1px solid;
+    border-bottom-color: rgb(237,237,237);
+    padding-bottom : 16px !important;
+  }
+
+  .label-ios,
+  .label-md {
+    margin: 0;
+  }
+
+  ion-list {
+    margin: 0;
+    width: 100%;
+  }
+
+  .list-ios {
+    margin : 0;
+  }
+
+  .item-block{
+    min-height : 0
+  }
+
+  ion-footer .toolbar-background-ios{
+    border-width: 0px !important;
+    background-color:rgb(234,234,234) !important;
+  }
+
+  ion-footer .toolbar-background-md{
+    border-width: 0px !important;
+    background-color:rgb(234,234,234) !important;
+  }
+}

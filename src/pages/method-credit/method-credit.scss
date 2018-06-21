@@ -1,0 +1,26 @@
+page-method-credit {
+  ion-footer {
+    background-color: white;
+  }
+
+  ion-input {
+    min-height: 44px;
+    border-top: 0.55px solid transparent;
+    border-bottom: 0.55px solid rgba(0, 0, 0, 0.05);
+    input.text-input-ios {
+      padding: 5px;
+    }
+  }
+
+  .text {
+    &-title { font-size: 1.6rem; color: rgb(74,74,74); font-weight:700;}
+    &-subtitle { font-size: 1rem; color: rgb(127,127,127); }
+    &-content { font-size: 1.4rem; color: rgb(74,74,74); }
+    &-price { font-size: 1.8rem; font-weight:500 }
+    &-header { font-size: 1.6rem; color: rgb(105,105,105); font-weight:700;}
+    &-subcontent {
+      font-size: 1.2rem;
+      color: rgb(74,74,74);
+    }
+  }
+}

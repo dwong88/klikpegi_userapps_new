@@ -1,0 +1,161 @@
+<!--
+  Generated template for the UserProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="klikpegihead">
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title style="border-bottom: 0px;">{{"ACCOUNT" | translate}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentPopover($event)">
+        <ion-icon name="md-more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="klikpegi-bg" *ngIf="!userExist">
+  <ion-grid padding-horizontal>
+    <ion-row padding-vertical>
+      <ion-col text-center>
+        <img class="ghours-logo-full" scroll="false" src="assets/images/ghours_full.png" />
+      </ion-col>
+    </ion-row>
+
+    <ion-row padding-bottom class="row-hello-prof">
+      <ion-col text-center>
+        <span class="text-content-light header-greet darkcolor">
+          {{"YOU_NEED_TO_LOGIN_SUBTITLE.FIRST" | translate}}
+          <br /> {{"YOU_NEED_TO_LOGIN_SUBTITLE.SECOND" | translate}}
+        </span>
+      </ion-col>
+    </ion-row>
+
+    <ion-row padding-vertical class="cls-submit-form-login">
+      <ion-col>
+        <button class="bordergrey" ion-button block (click)="presentLoginModal()" style="font-weight: bold;" [innerHTML]="'SIGN_IN_SPACE' | translate"></button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row padding-bottom class="cls-submit-form-login" style="margin-top: -1rem;">
+      <ion-col>
+        <button class="bordergrey" ion-button block icon-left style="background-color:white; color: #00447C; font-weight: bold;" (click)="login('facebook')">
+          <ion-icon name="logo-facebook"></ion-icon>&nbsp;
+          F a c e b o o k
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row padding-bottom class="cls-submit-form-login" style="margin-top: -1rem;">
+      <ion-col>
+        <button class="bordergrey" ion-button block icon-left style="background-color: white; color: red; font-weight: bold;" (click)="login('google')">
+          <ion-icon name="logo-google"></ion-icon>&nbsp;
+          G o o g l e
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row padding-bottom text-center align-items-center class="cls-form-devider" style="margin-top: -1rem;">
+      <ion-col>
+        <div class="div-devider">
+
+        </div>
+      </ion-col>
+      <ion-col col-2 text-center class="text-subcontent-large">
+        {{"OR" | translate}}
+      </ion-col>
+      <ion-col>
+        <div class="div-devider">
+
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="margin-top: -1rem;">
+      <ion-col class="text-content-light">
+        {{"NEW_GHOURSID" | translate}}?
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="cls-submit-form-login">
+      <ion-col>
+        <button class="bgwhite" ion-button block (click)="presentRegisterModal()" style="font-weight: bold;" [innerHTML]="'CREATE_ACCOUNT' | translate"></button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>
+
+<ion-content *ngIf="userExist">
+  <div class="cls-profile-login"></div>
+  <ion-list>
+
+    <ion-item no-lines>
+      <ion-row padding class="row-hello-prof">
+        <ion-col>
+          <span class="text-hello-dark-real darkcolor">{{ "HELLO" | translate }},</span>
+          <br />
+          <span class="text-content-light header-greet darkcolor-real">
+            {{user.email}}
+          </span>
+            <div class="edit-icon" (click)="editProfile()">
+                <img class="icon-img" src="assets/images/profile-icon/edit.png" />
+            </div>
+        </ion-col>
+      </ion-row>
+        <div padding>
+
+        </div>
+    </ion-item>
+
+
+    <ion-item no-lines (click)="helpCenter()">
+      <ion-avatar item-start>
+        <img class="avatar-img" src="assets/images/profile-icon/help.png" />
+      </ion-avatar>
+      <span class="text-content">{{"HELP_CENTER" | translate}}</span>
+      <br />
+      <span class="text-subcontent">{{"HELP_CENTER_SUBTITLE" | translate}}</span>
+    </ion-item>
+    <div class="div-separator">
+
+    </div>
+    <ion-item no-lines>
+      <ion-avatar item-start>
+        <img class="avatar-img" src="assets/images/profile-icon/refundable.png" />
+      </ion-avatar>
+      <span class="text-content">{{"MY_REFUND" | translate}}</span>
+      <br />
+      <span class="text-subcontent">{{"MY_REFUND_SUBTITLE" | translate}}</span>
+    </ion-item>
+    <div class="div-separator">
+
+    </div>
+    <ion-item no-lines>
+      <ion-avatar item-start>
+        <img class="avatar-img" src="assets/images/profile-icon/smartphone.png" />
+      </ion-avatar>
+      <span class="text-content">{{"PUSH_NOTIFICATION" | translate}}</span>
+      <br />
+      <span class="text-subcontent">{{"PUSH_NOTIFICATION_SUBTITLE" | translate}}</span>
+    </ion-item>
+    <div class="section-separator">
+
+    </div>
+    <ion-item no-lines (click)=logout()>
+      <ion-avatar item-start>
+        <img class="avatar-img" src="assets/images/profile-icon/logout.png" />
+      </ion-avatar>
+      <span class="text-content">{{"LOG_OUT" | translate}}</span>
+    </ion-item>
+    <div class="section-separator">
+
+    </div>
+  </ion-list>
+
+</ion-content>

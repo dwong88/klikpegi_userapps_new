@@ -1,0 +1,229 @@
+<ion-header class="cls-search-rest" [ngClass]="searchModeClass">
+  <ion-navbar>
+    <ion-title>{{"ROOM_DETAILS" | translate}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentPopover($event)">
+        <ion-icon name="md-more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <ion-toolbar class="extra-header">
+    <ion-title no-padding class="custom-header">
+      <span class="text-tax">
+        {{"PRICING_NOTICE" | translate }}
+      </span>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+  <ion-grid no-padding class="clscontentgrid">
+    <ion-slides pager="true" style="height:180px;object-fit:cover">
+      <!--<ion-slide>-->
+        <!--<img src={{roomDetail.thumbnail}} style="width:100vw" />-->
+      <!--</ion-slide>-->
+      <ion-slide *ngFor="let image of roomDetail.gallery">
+        <img src={{image._url}} style="width:100vw" />
+      </ion-slide>
+    </ion-slides>
+    <ion-row padding>
+      <ion-col class="text-title">
+        {{roomDetail.name}}
+      </ion-col>
+    </ion-row>
+    <ion-row padding>
+      <ion-col *ngIf="roomDetail.mode == 0">
+        <span class="text-price">
+          {{currencySymbol}} {{(roomDetail.priceList[roomDetail.duration - 1].price * (100 - roomDetail.discountRate)) / 100 | number:'1.0-0'}}
+        </span>
+        <span class="text-subheader">/{{"ROOM" | translate}} {{"FOR" | translate}} /{{roomDetail.duration}} {{"HOUR(S)" | translate}}</span>
+        <br/>
+        <div *ngIf="roomDetail.discountRate > 0">
+          <s class="text-content">{{currencySymbol}} {{roomDetail.priceList[roomDetail.duration - 1].price | number:'1.0-0'}}</s>
+          <span class="text-subheader"> {{roomDetail.discountRate}}% OFF</span>
+        </div>
+      </ion-col>
+      <ion-col *ngIf="roomDetail.mode == 1">
+        <span class="text-price">
+          {{currencySymbol}} {{(roomDetail.pricing24 * (100 - roomDetail.discountRate)) / 100 | number:'1.0-0'}}
+        </span>
+        <span class="text-subheader">/{{"ROOM" | translate}} {{"FOR" | translate}} 24 {{"HOUR(S)" | translate}}</span>
+        <br/>
+        <div *ngIf="roomDetail.discountRate > 0">
+          <s class="text-content">{{currencySymbol}} {{roomDetail.price | number:'1.0-0'}}</s>
+          <span class="text-subheader"> {{roomDetail.discountRate}}% OFF</span>
+        </div>
+      </ion-col>
+      <ion-col *ngIf="roomDetail.mode == 2">
+        <span class="text-price">
+          {{currencySymbol}} {{(roomDetail.price * (100 - roomDetail.discountRate)) / 100 | number:'1.0-0'}}
+        </span>/{{"ROOM" | translate}} / {{"NIGHT(S)" | translate}}
+        <br/>
+        <div *ngIf="roomDetail.discountRate > 0">
+          <s class="text-content">{{currencySymbol}} {{roomDetail.price | number:'1.0-0'}}</s>
+          <span class="text-subheader"> {{roomDetail.discountRate}}% OFF</span>
+        </div>
+      </ion-col>
+    </ion-row>
+    <div class="separator">
+
+    </div>
+    <ion-row padding>
+      <ion-col class="text-header">
+        {{"BASIC_FACILITIES" | translate}}
+      </ion-col>
+    </ion-row>
+    <ion-row padding-horizontal>
+      <ion-list class="div-separator">
+        <ion-item no-lines *ngFor="let item of basicFacilities">
+          <ion-row no-padding>
+            <ion-col col-1>
+              <img style="width:16px;height:16px;margin-bottom:-2px" [src]="item.value == 0 ? item.imageB : item.imageA" />
+
+            </ion-col>
+            <ion-col class="text-item-title">
+              <span *ngIf="item.value == 0">{{item.title1 | translate}}</span>
+              <span *ngIf="item.value == 1">{{item.title2 | translate}}</span>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+      </ion-list>
+    </ion-row>
+
+    <ion-row padding>
+      <ion-col class="text-header">
+        {{"ROOM_OVERVIEW" | translate}}
+      </ion-col>
+    </ion-row>
+    <ion-row padding-horizontal>
+      <ion-list class="div-separator">
+        <ion-item no-lines *ngFor="let item of roomOverview">
+          <ion-row no-padding>
+            <ion-col col-1>
+              <img style="height:16px;width:16px;object-fit:contain" [src]="item.image" />
+            </ion-col>
+            <ion-col>
+              <span class="text-item-title">{{item.title | translate}}</span>
+              <br />
+              <span class="text-item-subtitle">{{item.value}}</span>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+        <ion-item no-lines>
+          <ion-row no-padding>
+            <ion-col col-1>
+              <img style="height:16px;width:16px;object-fit:contain" [src]="'assets/images/room-overview/Capacity.png'" />
+            </ion-col>
+            <ion-col class="text-item-title">
+              <span class="text-item-title">{{"UNIT_CAPACITY" | translate}}</span>
+              <br />
+              <span class="text-item-subtitle">{{roomDetail.unitCapacity}} {{"GUEST(S)" | translate}}/{{"ROOM" | translate}}</span>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+      </ion-list>
+    </ion-row>
+
+    <ion-row padding>
+      <ion-col class="text-header">
+        {{"ROOM_FACILITIES" | translate}}
+      </ion-col>
+    </ion-row>
+    <ion-row padding-horizontal>
+      <ion-list class="div-separator">
+        <ion-item no-lines *ngFor="let item of filterArray(roomFacilities,1)">
+          <ion-row no-padding>
+            <ion-col col-1>
+              <img style="height:16px;width:16px;object-fit:contain" [src]="item.image" />
+            </ion-col>
+            <ion-col class="text-item-title">
+              {{item.title | translate}}
+            </ion-col>
+          </ion-row>
+        </ion-item>
+      </ion-list>
+    </ion-row>
+    <ion-row padding>
+      <ion-col class="text-header">
+        {{"BATHROOM_AMENITIES" | translate}}
+      </ion-col>
+    </ion-row>
+    <ion-row padding-horizontal>
+      <ion-list class="div-separator">
+        <ion-item no-lines *ngFor="let item of filterArray(bathroomAmenities,1)">
+          <ion-row no-padding>
+            <ion-col col-1>
+              <img style="height:16px;width:16px;object-fit:contain" [src]="item.image" />
+            </ion-col>
+            <ion-col class="text-item-title">
+              {{item.title | translate}}
+            </ion-col>
+          </ion-row>
+        </ion-item>
+      </ion-list>
+    </ion-row>
+    <ion-row padding-horizontal align-items-center>
+      <ion-col class="text-header" style="padding:5px">
+        {{"OTHER_AMENITIES" | translate}}
+      </ion-col>
+      <ion-col text-right>
+        <button ion-button clear small (click)="seeOtherAmenities()">{{"SEE_ALL" | translate}}</button>
+      </ion-col>
+    </ion-row>
+    <div class="separator">
+
+    </div>
+
+    <!-- <ion-list padding>
+      <ion-list-header>
+        Basic Facilities
+      </ion-list-header>
+      <ion-item no-lines *ngFor="let item of filterArray(basicFacilities,1)">
+        <ion-avatar item-start>
+          <img style="border-radius:0;height:16px" [src]="item.image" />
+        </ion-avatar>
+        <span class="text-item-title">{{item.title}}</span>
+      </ion-item>
+    </ion-list> -->
+  </ion-grid>
+
+  <div class="section-separator">
+
+  </div>
+
+  <ion-list>
+    <ion-item text-wrap (click)="toggleGroup(99)" [ngClass]="{active: isGroupShown(99)}">
+      <span class="text-title">{{"ROOM_DESCRIPTION" | translate}}</span>
+      <ion-icon item-end color="success" item-right [name]="isGroupShown(99) ? 'md-arrow-dropdown' : 'md-arrow-dropright'"></ion-icon>
+      <div *ngIf="isGroupShown(99)">
+        <span *ngIf="roomDetail.currentLanguage == 'en'" class="text-item-description" [innerHTML]="roomDetail.description"></span>
+        <span *ngIf="roomDetail.currentLanguage == 'id'" class="text-item-description" [innerHTML]="roomDetail.descriptionINA"></span>
+      </div>
+    </ion-item>
+
+    <ion-item *ngFor="let item of items; let i = index;" text-wrap (click)="toggleGroup(i)" [ngClass]="{active: isGroupShown(i)}">
+      <span class="text-title">{{item.title | translate}}</span>
+      <ion-icon item-end color="success" item-right [name]="isGroupShown(i) ? 'md-arrow-dropdown' : 'md-arrow-dropright'"></ion-icon>
+      <div *ngIf="isGroupShown(i)">
+        <span *ngIf="roomDetail.currentLanguage == 'en'" class="text-item-description" [innerHTML]="item.text"></span>
+        <span *ngIf="roomDetail.currentLanguage == 'id'" class="text-item-description" [innerHTML]="item.textINA"></span>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer padding-horizontal style="background-color:rgb(234,234,234);" [ngClass]="searchModeClass">
+  <ion-toolbar style="background-color:rgb(234,234,234);border-width:0">
+    <ion-row align-items-center>
+      <!-- <ion-col text-left style="font-size: 2rem;">
+        {{roomDetail.priceList[roomDetail.duration - 1].price | number:'1.0-0'}}
+        <br/>
+        <s style="font-size: 1.3rem">{{roomDetail.priceList[roomDetail.duration - 1].price | number:'1.0-0'}}</s><b style="font-size:1.3rem"> 20%
+        OFF</b>
+      </ion-col> -->
+      <ion-col class="cls-button-submit">
+        <button ion-button block (click)="showBookingDetail()">{{"BOOK_THIS_ROOM" | translate}}</button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

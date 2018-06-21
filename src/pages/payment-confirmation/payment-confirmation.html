@@ -1,0 +1,62 @@
+<!--
+  Generated template for the PaymentConfirmationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ "PAYMENT_CONFIRMATION" | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-thumbnail item-left>
+        <img src="{{bookingDetails.thumbnail}}">
+      </ion-thumbnail>
+      <h2>{{bookingDetails.propertyName}}</h2>
+      <p>{{bookingDetails.propertyType}}</p>
+      <p>{{bookingDetails.className}} • {{bookingDetails.unitQty}} units</p>
+      <p>{{bookingDetails.interval}} hours</p>
+    </ion-item>
+    <ion-item>
+      <ion-row no-padding>
+        <ion-col col-2>
+          <p>Check-in</p>
+          <p>Check-out</p>
+        </ion-col>
+        <ion-col col-1>
+        </ion-col>
+        <ion-col>
+          <p>{{bookingDetails.checkIn| date:'d MMMM y • H:mm'}}</p>
+          <p>{{bookingDetails.checkOut| date: 'd MMMM y • H:mm'}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+    <ion-item>
+      <ion-row>
+        <ion-col text-center>
+          {{ "PAYMENT_INFO" | translate }}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col text-center>
+          <img src="{{pathForImage(lastImage)}}" [hidden]="lastImage === null">
+          <h3 [hidden]="lastImage !== null">{{ "PLEASE_SELECT_IMAGE" | translate }}</h3>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <button ion-button block clear (click)="presentActionSheet()">{{ "SELECT_IMAGE" | translate }}</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button block clear (click)="uploadImage()" [disabled]="lastImage === null">{{ "UPLOAD_IMAGE" | translate }}</button>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

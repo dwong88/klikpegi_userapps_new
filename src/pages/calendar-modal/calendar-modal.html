@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-toolbar>
+        <!--<ion-title></ion-title>-->
+        <ion-buttons left>
+            <button ion-button icon-only (click)="dismissModal()" color="dark">
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-calendar [(ngModel)]="date"
+                  (onChange)="onChange($event)"
+                  [type]="type"
+                  [format]="'YYYY-MM-DD'">
+    </ion-calendar>
+
+    <ion-grid>
+        <ion-row padding-horizontal class="cls-submit-form-login">
+            <ion-col>
+                <button class="bordergrey" ion-button type="button" (click)="pickDate()" block style="font-weight: bold;">{{labelPick}}</button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

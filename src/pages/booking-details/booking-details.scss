@@ -1,0 +1,48 @@
+page-booking-details {
+  .text {
+    &-title { font-size: 1.6rem; color: rgb(74,74,74); }
+    &-subtitle { font-size: 1rem; color: rgb(127,127,127); }
+    &-content { font-size: 1.4rem; color: rgb(74,74,74); }
+    &-price { font-size: 1.8rem; color: rgb(74,74,74); font-weight:500 }
+    &-header { font-size: 1rem; color: rgb(105,105,105); text-transform: uppercase; font-weight:700;}
+  }
+
+  .separator {
+    background-color: rgb(234,234,234);
+    height: 8px ;
+  }
+
+  .item {
+    padding-left: 0px !important;
+  }
+
+  ion-searchbar.searchbar {
+    background: #fff;
+    color: black;
+    .searchbar-input {
+      padding: 5px !important;
+    }
+    .searchbar-search-icon {
+      background-image: none;
+    }
+  }
+  ion-input {
+    min-height: 44px;
+    border-top: 0.55px solid transparent;
+    border-bottom: 0.55px solid rgba(0, 0, 0, 0.05);
+    color: black;
+    input.text-input-ios {
+      padding: 5px;
+    }
+  }
+  .div-error-msg {
+    padding: 5px;
+    font-size: 0.8rem;
+    color: red;
+  }
+  ion-auto-complete {
+    ul li {
+      color: black;
+    }
+  }
+}

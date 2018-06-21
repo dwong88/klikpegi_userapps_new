@@ -1,0 +1,34 @@
+<!--<ion-header class="klikpegihead">
+
+    <ion-navbar>
+        <ion-title>{{"PROMO" | translate }}</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+</ion-content>
+-->
+
+<ion-header class="klikpegihead">
+    <ion-navbar>
+        <ion-title>
+            <ion-title>{{"PROMO" | translate }}</ion-title>
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-item>
+        <button class="add" ion-button item-right margin-bottom color="primary" outline (click)="addEntry()">
+            Tambah Data<ion-icon name="add"></ion-icon>
+        </button>
+    </ion-item>
+    <ion-item *ngFor="let item of items">
+        <h2>{{item.property_cd}} {{item.property_name}}</h2>
+        <button ion-button color="primary" item-right outline (click)="viewEntry({record: item})">Lihat</button>
+    </ion-item>
+
+</ion-content>
+

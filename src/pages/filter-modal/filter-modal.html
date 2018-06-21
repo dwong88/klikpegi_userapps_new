@@ -1,0 +1,72 @@
+<!--
+  Generated template for the FilterModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ "FILTER_SORT" | translate }}</ion-title>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="dismissModal()" color="dark">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list radio-group>
+
+    <ion-list-header>
+      <span class="text-header">{{ "SORT_BY" | translate }}</span>
+    </ion-list-header>
+
+    <ion-item no-lines *ngFor="let item of sortType">
+      <ion-label>
+        <span class="text-subcontent">
+          {{ item.title | translate }}
+        </span>
+      </ion-label>
+      <ion-radio [value]="item.value" [checked]="item.checked" (ionSelect)="setSortType(item.value)"></ion-radio>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-row no-padding>
+        <ion-col text-left no-padding>
+          <span class="text-header">{{ "PRICE_RANGE" | translate }}</span>            
+        </ion-col>
+        <ion-col text-right no-padding>
+          {{currencySymbol}} {{priceMin | number:'1.0-0'}} - {{currencySymbol}} {{priceMax | number:'1.0-0'}}
+        </ion-col>
+      </ion-row>
+    </ion-list-header>
+    <ion-item no-lines>
+      <ion-range dualKnobs="true" [(ngModel)]="priceRange" (ionChange)="onPriceChange(priceRange)" min="0" max="2000000" step="1000">
+      </ion-range>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      <span class="text-header">{{ "PROPERTY_CATEGORY" | translate }}</span>
+    </ion-list-header>
+    <ion-item no-lines *ngFor="let category of categories">
+      <ion-label>
+        <span class="text-subcontent">
+          {{ category.name | translate }}
+        </span>
+      </ion-label>
+      <ion-checkbox [(ngModel)]="category.checked" (ionChange)="onChangeCategories(category.id, category.checked)"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <button ion-button block clear (click)="applyFilter()">
+    {{ "REFINE_SEARCH" | translate }}
+  </button>
+</ion-footer>

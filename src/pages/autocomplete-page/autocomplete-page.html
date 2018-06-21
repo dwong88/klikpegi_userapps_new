@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Enter address</ion-title>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="dismiss()" color="dark">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar [(ngModel)]="autocomplete.query" [showCancelButton]="true" (ionInput)="updateSearch()" (ionCancel)="dismiss()"></ion-searchbar>
+  <ion-list>
+    <ion-item tappable (click)="setNearby()">
+      Nearby
+    </ion-item>
+    <ion-item no-lines *ngFor="let item of autocompleteItems" tappable (click)="chooseItem(item)">
+      {{ item.description }}
+    </ion-item>
+  </ion-list>
+</ion-content>

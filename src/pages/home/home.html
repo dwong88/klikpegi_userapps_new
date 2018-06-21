@@ -1,0 +1,190 @@
+<ion-header>
+  <ion-navbar class="custom-nav-bar">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title *ngIf="searchMode == '0'">
+        <span>{{"SEARCHING" | translate}}</span>
+    </ion-title>
+    <ion-title *ngIf="searchMode == '1'">
+        <span>{{"24-HOURS" | translate}}</span>
+    </ion-title>
+    <ion-title *ngIf="searchMode == '2'">
+        <span>{{"SEARCHING" | translate}}</span>
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentPopover($event)">
+        <ion-icon name="md-more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding no-bounce [ngClass]="{'cls-search-mode0': isSearchModeTransit, 'cls-search-mode1': isSearchMode24Hours, 'cls-search-mode2': isSearchModeOneNight}">
+  <ion-grid class="border-grid">
+    <ion-row>
+      <ion-col>
+        <!-- <ion-item>
+            <ion-input (click)="showAddressModal()" [(ngModel)]="address.place" type="text" placeholder="Pick an address"></ion-input>
+          </ion-item> -->
+        <ion-item (click)="showAddressModal()" class="menu-border">
+          <ion-icon name="ios-pin-outline" item-left></ion-icon>
+
+          <span *ngIf="address !== 'Nearby'">{{address.description || "NEARBY" | translate}}</span>
+          <span *ngIf="address == 'Nearby'">{{address}}</span>
+        </ion-item>
+
+        <!-- <ion-item>
+            <ion-label text-left>{{priceRange.lower | number:'1.0-0'}}</ion-label>
+            <ion-label text-right>{{priceRange.upper | number:'1.0-0'}}</ion-label>
+          </ion-item>
+
+          <ion-item>
+            <ion-range dualKnobs="true" [(ngModel)]="priceRange" min="0" max="10000000" step="50000" (ionChange)="showValue(priceRange)">
+            </ion-range>
+          </ion-item> -->
+
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="searchMode == '0'">
+      <ion-col>
+        <ion-item class="menu-border">
+          <ion-label>Check In</ion-label>
+          <ion-icon name="ios-calendar-outline" item-left></ion-icon>
+          <ion-datetime style="padding-left:0px" [min]="minDate" [max]="maxDate" displayFormat="DD MMM, YYYY HH:mm" [(ngModel)]="checkInDate" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55"></ion-datetime>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="searchMode == '1'">
+      <ion-col>
+        <ion-item class="menu-border">
+          <ion-label>Check In</ion-label>
+          <ion-icon name="ios-calendar-outline" item-left></ion-icon>
+          <ion-datetime style="padding-left:0px" [min]="minDate" displayFormat="DD MMM, YYYY HH:mm" [(ngModel)]="checkInDate"></ion-datetime>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="searchMode == '2'">
+      <ion-col>
+        <ion-item class="menu-border">
+          <ion-label>Check In</ion-label>
+          <ion-icon name="ios-calendar-outline" item-left></ion-icon>
+          <!--<mbsc-range #rangeDate="mobiscroll" [options]="checkInOptions" (onSet)="setRangeDate($event)"></mbsc-range>-->
+          <ion-label class="lbl-date" (click)="opencal()">{{labelCheckInDate}}</ion-label>
+          <!--<ion-datetime style="padding-left:0px" [min]="minDate" displayFormat="DD MMM, YYYY" [(ngModel)]="checkInDate"></ion-datetime>-->
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col *ngIf="searchMode == '0'">
+        <ion-item class="menu-border">
+          <ion-label>{{"DURATION" | translate}}</ion-label>
+          <ion-icon name="ios-time-outline" item-left></ion-icon>
+          <ion-select [(ngModel)]="duration">
+            <ion-option *ngFor="let option of [1,2,3,4,5,6,7,8,9,10,11,12]" [value]="option">
+              {{option}} {{"HOURS" | translate}}
+            </ion-option>
+            <!-- <ion-option selected value="1">1 hours</ion-option>
+            <ion-option value="2">2 hours</ion-option>
+            <ion-option value="3">3 hours</ion-option>
+            <ion-option value="4">4 hours</ion-option>
+            <ion-option value="5">5 hours</ion-option>
+            <ion-option value="6">6 hours</ion-option>
+            <ion-option value="7">7 hours</ion-option>
+            <ion-option value="8">8 hours</ion-option>
+            <ion-option value="9">9 hours</ion-option>
+            <ion-option value="10">10 hours</ion-option>
+            <ion-option value="11">11 hours</ion-option>
+            <ion-option value="12">12 hours</ion-option> -->
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col *ngIf="searchMode == '2'">
+        <ion-item class="menu-border">
+          <ion-label>{{"NIGHTS" | translate}}</ion-label>
+          <ion-icon name="ios-moon-outline" item-left></ion-icon>
+          <ion-select [(ngModel)]="duration">
+            <ion-option selected value="1">1 {{"NIGHTS" | translate}}</ion-option>
+            <ion-option value="2">2 {{"NIGHTS" | translate}}</ion-option>
+            <ion-option value="3">3 {{"NIGHTS" | translate}}</ion-option>
+              <ion-option value="4">4 {{"NIGHTS" | translate}}</ion-option>
+              <ion-option value="5">5 {{"NIGHTS" | translate}}</ion-option>
+              <ion-option value="6">6 {{"NIGHTS" | translate}}</ion-option>
+              <ion-option value="7">7 {{"NIGHTS" | translate}}</ion-option>
+              <ion-option value="8">8 {{"NIGHTS" | translate}}</ion-option>
+              <ion-option value="9">9 {{"NIGHTS" | translate}}</ion-option>
+              <ion-option value="10">10 {{"NIGHTS" | translate}}</ion-option>
+              <ion-option value="11">11 {{"NIGHTS" | translate}}</ion-option>
+              <ion-option value="12">12 {{"NIGHTS" | translate}}</ion-option>
+              <ion-option value="13">13 {{"NIGHTS" | translate}}</ion-option>
+              <ion-option value="14">14 {{"NIGHTS" | translate}}</ion-option>
+              <ion-option value="15">15 {{"NIGHTS" | translate}}</ion-option>
+              <ion-option value="16">16 {{"NIGHTS" | translate}}</ion-option>
+              <ion-option value="17">17 {{"NIGHTS" | translate}}</ion-option>
+              <ion-option value="18">18 {{"NIGHTS" | translate}}</ion-option>
+              <ion-option value="19">19 {{"NIGHTS" | translate}}</ion-option>
+              <ion-option value="20">20 {{"NIGHTS" | translate}}</ion-option>
+              <ion-option value="21">21 {{"NIGHTS" | translate}}</ion-option>
+              <ion-option value="22">22 {{"NIGHTS" | translate}}</ion-option>
+              <ion-option value="23">23 {{"NIGHTS" | translate}}</ion-option>
+              <ion-option value="24">24 {{"NIGHTS" | translate}}</ion-option>
+              <ion-option value="25">25 {{"NIGHTS" | translate}}</ion-option>
+              <ion-option value="26">26 {{"NIGHTS" | translate}}</ion-option>
+              <ion-option value="27">27 {{"NIGHTS" | translate}}</ion-option>
+              <ion-option value="28">28 {{"NIGHTS" | translate}}</ion-option>
+              <ion-option value="29">29 {{"NIGHTS" | translate}}</ion-option>
+              <ion-option value="30">30 {{"NIGHTS" | translate}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-12 col-sm-12 col-md-6 col-lg-6>
+        <ion-item class="menu-border">
+          <ion-label>{{"GUEST" | translate}}</ion-label>
+          <ion-icon name="ios-people-outline" item-left></ion-icon>
+          <ion-select [(ngModel)]="guestQty">
+            <ion-option *ngFor="let number of options" value="{{number}}">{{number}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col col-12 col-sm-12 col-md-6 col-lg-6>
+        <ion-item class="menu-border">
+          <ion-label>{{"ROOM" | translate}}</ion-label>
+          <ion-icon name="ios-cube-outline" item-left></ion-icon>
+          <ion-select [(ngModel)]="roomQty">
+            <ion-option *ngFor="let number of options" value="{{number}}">{{number}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="cls-button-search">
+      <ion-col text-center>
+        <button ion-button block style="border-radius:10px" (click)="searchRooms(kilometers, checkInDate, address.place_id, duration, guestQty, roomQty)">{{"SEARCH" | translate}}</button>
+        <!-- <ion-item style="background:transparent">
+          <ion-range min="1" max="100" [(ngModel)]="kilometers" color="primary">
+          </ion-range>
+        </ion-item>
+        <span style="text-shadow: 0 0 0.3em #FFF, 0 0 0.3em #FFF"><b>Search within {{kilometers || 1}} kilometers</b></span> -->
+      </ion-col>
+    </ion-row>
+    <!-- <button ion-button secondary menuToggle>Toggle Menu</button> -->
+  </ion-grid>
+
+  <div padding-top text-center style="padding-top: 80px;">
+    <img height="51" width="140" [src]="renderLogo()" />
+  </div>
+
+</ion-content>
+
+<!-- <ion-slides pager>
+
+  <ion-slide *ngFor="let image of images" [style.background-image]="sanitizeImage(image)" style="background-repeat:no-repeat;background-size:cover">
+  </ion-slide>
+
+</ion-slides> -->

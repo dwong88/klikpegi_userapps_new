@@ -1,0 +1,72 @@
+page-login {
+  .rectangle-20 {
+      height: 200px;
+      border-radius: 8px;
+      background-image: linear-gradient(to bottom, rgb(138, 192, 255), rgb(14, 84, 166));
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.31);
+  }
+  .g-hours {
+      width: 88px;
+      height: 29px;
+      mix-blend-mode: multiply;
+      font-size: 24px;
+      font-weight: 500;
+      text-align: center;
+      color: rgb(183, 196, 211);
+      padding-left: 16px;
+  }
+  .card-text {
+      bottom: 20px;
+      left: 20px;
+      position: absolute;
+  }
+  .avatar-img {
+      object-fit: contain;
+      height: 16px !important;
+      margin-top: 10px !important;
+      border-radius: 0;
+  }
+  .edit-icon {
+      bottom: 20px;
+      right: 20px;
+      position: absolute;
+  }
+  .icon-img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+  }
+  .text {
+      &-hello {
+          font-size: 3.6rem;
+          font-weight: 300;
+          color: rgb(255, 255, 255);
+      }
+      &-email {
+          font-size: 1.4rem;
+          color: rgb(255, 255, 255);
+      }
+      &-content {
+          font-size: 1.4rem;
+          font-weight: 500;
+          text-align: left;
+          color: rgb(74, 74, 74);
+      }
+      &-subcontent {
+        font-size: 1.2rem;
+        text-align: left;
+        color: rgb(155, 155, 155);
+      }
+  }
+  .div-separator {
+      border-bottom: 1px solid;
+      border-bottom-color: rgb(237, 237, 237);
+  }
+  [ion-button] {
+      border-radius: 8px !important;
+  }
+  .section-separator {
+      background-color: rgb(234, 234, 234);
+      height: 20px;
+  }
+}

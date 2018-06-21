@@ -1,0 +1,118 @@
+<!--
+  Generated template for the PaymentConfirmationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="cls-search-rest" [ngClass]="searchModeClass">
+
+    <ion-navbar>
+        <ion-title>{{"TRANSFER" | translate}}</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="presentPopover($event)">
+                <ion-icon name="md-more"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+    <ion-toolbar class="extra-header">
+        <ion-title no-padding class="custom-header">
+      <span class="text-tax">
+        {{"PRICING_NOTICE" | translate }}
+      </span>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="cls-bck-grey">
+    <div padding class="text-header">
+        {{"PRICE_DETAILS" | translate}}
+    </div>
+
+    <ion-grid padding class="realcolor">
+        <ion-row class="catch-eye">
+            <ion-col>
+                {{bookingData.propName}}
+            </ion-col>
+            <ion-col text-right>
+                <span *ngIf="bookingData.mode == 0">{{currencySymbol}} {{transitPrice * bookingData.roomQty | number:'1.0-0'}}</span>
+                <span *ngIf="bookingData.mode == 1">{{currencySymbol}} {{hour24Price * bookingData.roomQty | number:'1.0-0'}}</span>
+                <span *ngIf="bookingData.mode == 2">{{currencySymbol}} {{nightPrice * bookingData.roomQty | number:'1.0-0'}}</span>
+            </ion-col>
+        </ion-row>
+        <ion-row class="catch-eye">
+            <ion-col>
+                {{"UNIQUE_CODE" | translate}}
+            </ion-col>
+            <ion-col text-right>
+                - {{bookingData.uniqueCode}}
+            </ion-col>
+        </ion-row>
+
+        <ion-row class="catch-eye">
+            <ion-col>
+                {{"TOTAL_PRICE" | translate}}
+            </ion-col>
+            <ion-col text-right>
+                <span *ngIf="bookingData.mode == 0" class="text-price">{{currencySymbol}} {{transitPrice * bookingData.roomQty - bookingData.uniqueCode | number:'1.0-0'}}</span>
+                <span *ngIf="bookingData.mode == 1" class="text-price">{{currencySymbol}} {{hour24Price * bookingData.roomQty - bookingData.uniqueCode | number:'1.0-0'}}</span>
+                <span *ngIf="bookingData.mode == 2" class="text-price">{{currencySymbol}} {{nightPrice * bookingData.roomQty - bookingData.uniqueCode | number:'1.0-0'}}</span>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <div class="separator-with-shadow">
+
+    </div>
+
+    <ion-grid padding>
+        <ion-row align-items-center>
+            <ion-col class="text-header">
+                Transfer to
+            </ion-col>
+            <!-- <ion-col text-right>
+            <button ion-button small clear color="dark">DETAILS</button>
+            </ion-col> -->
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <span class="text-subtitle">{{"BANK_NAME" | translate}}</span>
+                <br/>
+                <span class="text-content">{{bank?.bankName || '-'}}</span>
+            </ion-col>
+            <ion-col>
+                <span class="text-subtitle">{{"ACCOUNT_NUMBER" | translate}}</span>
+                <br/>
+                <span class="text-content">{{bank?.bankAccount || '-'}}</span>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <span class="text-subtitle">{{"ACCOUNT_HOLDER_NAME" | translate}}</span>
+                <br/>
+                <span class="text-content">klikpegi.com</span>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <div class="separator-with-shadow">
+
+    </div>
+</ion-content>
+
+<ion-footer padding-horizontal [ngClass]="searchModeClass">
+<ion-row align-items-center>
+    <!--<ion-col text-justify class="text-content">-->
+    <!--{{"YOU_NEED_TO_PAY" | translate}}-->
+    <!--<br/>-->
+    <!--<span class="text-price" *ngIf="bookingData.mode == 0">{{transitPrice * bookingData.roomQty - uniqueDigit| number:'1.0-0'}}</span>-->
+    <!--<span class="text-price" *ngIf="bookingData.mode == 1">{{hour24Price * bookingData.roomQty - uniqueDigit| number:'1.0-0'}}</span>-->
+    <!--<span class="text-price" *ngIf="bookingData.mode == 2">{{nightPrice * bookingData.roomQty - uniqueDigit| number:'1.0-0'}}</span>-->
+    <!--</ion-col>-->
+    <!--<ion-col>-->
+    <!--<button ion-button block (click)="bookRoom()">OK</button>-->
+    <!--</ion-col>-->
+    <ion-col>
+        <button ion-button block (click)="bookRoom()">{{"PAY_NOW" | translate}}</button>
+    </ion-col>
+</ion-row>
+</ion-footer>

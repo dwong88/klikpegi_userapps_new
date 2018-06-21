@@ -1,0 +1,25 @@
+<!--
+  Generated template for the OtherAmenitiesModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ "OTHER_AMENITIES" | translate }}</ion-title>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="dismissModal()" color="dark">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item no-lines *ngFor="let amenity of filterArray(otherAmenities,1)">
+      • {{amenity.title | translate}}
+    </ion-item>
+  </ion-list>
+</ion-content>

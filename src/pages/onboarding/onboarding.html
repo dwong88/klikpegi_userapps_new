@@ -1,0 +1,50 @@
+<!--
+  Generated template for the Onboarding page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content padding [class]="bgClsName" no-bounce>
+  <div class="container">
+    <ion-grid>
+      <ion-row>
+        <ion-col text-center>
+          <!-- <img src="assets/images/gbi-logo.png"/> -->
+        </ion-col>
+      </ion-row>
+        <ion-row>
+            <ion-col text-center>
+                &nbsp;
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col text-center>
+                &nbsp;
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col text-center col-6 offset-3>
+                <button ion-button block outline color="light" style="border-radius:10px; font-weight: bold;" (click)="presentModal(1)">{{"QUICK_TOUR" | translate}}</button>
+            </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-content>
+
+  <ion-grid class="footer-nav">
+    <ion-row>
+      <ion-col>
+        <button ion-button block outline color="light" (click)="presentModal(3)">{{"REGISTER" | translate}}</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button block outline color="light" (click)="presentModal(2)">{{"LOG_IN" | translate}}</button>
+      </ion-col>
+    </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <button ion-button block outline color="light" (click)="skip()">{{"SKIP" | translate}}</button>
+    </ion-col>
+  </ion-row>
+  <span text-center class="text-copyright">©{{"COPYRIGHTED_BY" | translate}} klikpegi.com, 2017.</span>
+</ion-grid>

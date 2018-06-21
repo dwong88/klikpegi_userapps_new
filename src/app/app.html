@@ -1,0 +1,32 @@
+<!-- <ion-menu [content]="content">
+  <ion-content>
+      <ion-list> -->
+
+        <!--<ion-list-header style="background-color:black" *ngIf="user">-->
+          <!--<ion-grid>-->
+            <!--<ion-row align-items-center style="font-size:24px">-->
+              <!--<ion-col>-->
+                <!--{{user.firstName}} {{user.lastName}}-->
+              <!--</ion-col>-->
+              <!--<ion-col text-right>-->
+                <!--<button menuClose ion-button clear (click)="editProfile()">-->
+                  <!--<ion-icon style="font-size: 24px" name="settings"></ion-icon>-->
+                <!--</button>-->
+              <!--</ion-col>-->
+            <!--</ion-row>-->
+          <!--</ion-grid>-->
+        <!--</ion-list-header>-->
+        <!--<button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">-->
+          <!--{{p.title}}-->
+        <!--</button>-->
+
+        <!-- <button menuClose ion-item (click)="howToUse()">Quick Tour</button> -->
+
+        <!-- <button menuClose ion-item (click)="logout()">Logout</button> -->
+        <!--
+      </ion-list>
+  </ion-content>
+</ion-menu> -->
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

@@ -1,0 +1,73 @@
+page-onboarding {
+  .footer-nav {
+    position: absolute;
+    bottom: 1px;
+    z-index: 1;
+    span {
+      font-weight: bold;
+    }
+
+    @media (max-width: 375px) and (max-height: 812px) {
+      padding-bottom: 30px;
+    }
+  }
+
+  .full-screen {
+    background-image: url('../assets/images/background-image/bgfull.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+
+    @media (max-width: 375px) and (max-height: 812px) {
+      background-image: url('../assets/images/background-image/bgiphonex.jpg');
+      background-size: contain;
+    }
+
+    @media (max-width: 412px) and (max-height: 846px) {
+      background-image: url('../assets/images/background-image/bgiphonex.jpg');
+      background-size: 100%;
+    }
+
+    @media (max-width: 414px) and (max-height: 736px) {
+      background-image: url('../assets/images/background-image/rectangle.jpg');
+      background-size: contain;
+    }
+
+    @media (max-width: 412px) and (max-height: 660px) {
+      background-image: url('../assets/images/background-image/bgfull.jpg');
+      background-size: 100%;
+    }
+
+    @media (max-width: 360px) and (max-height: 740px) {
+      background-image: url('../assets/images/background-image/bgiphonex.jpg');
+      background-size: 100%;
+    }
+
+    @media (max-width: 360px) and (max-height: 640px) {
+      background-image: url('../assets/images/background-image/bgiphonex.jpg');
+      background-size: 100%;
+    }
+  }
+
+  .text {
+    &-content {
+      font-size: 1.6rem;
+      color: #ffffff;
+    }
+
+    &-copyright {
+      font-size: 0.9rem;
+      color: #ffffff;
+      font-weight: 500;
+    }
+  }
+
+  .full-screen ion-grid {
+    height: 90vh;
+    justify-content: center;
+  }
+
+  .container {
+    height: 100%;
+    overflow-y: hidden;
+  }
+}

@@ -1,0 +1,114 @@
+<!--
+  Generated template for the PaymentConfirmationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="cls-search-rest" [ngClass]="searchModeClass">
+
+    <ion-navbar>
+        <ion-title>{{"PAYMENT_METHOD" | translate}}</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="presentPopover($event)">
+                <ion-icon name="md-more"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+    <ion-toolbar class="extra-header">
+        <ion-title no-padding class="custom-header">
+      <span class="text-tax">
+        {{"PRICING_NOTICE" | translate }}
+      </span>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="cls-bck-grey">
+    <ion-grid padding>
+        <ion-row align-items-center>
+            <ion-col class="text-title">
+                {{bookingData.propName}}
+            </ion-col>
+            <!-- <ion-col text-right>
+            <button ion-button small clear color="dark">DETAILS</button>
+          </ion-col> -->
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <span class="text-subtitle">{{"ROOM_TYPE" | translate}}</span>
+                <br />
+                <span class="text-content">{{bookingData.name}}</span>
+            </ion-col>
+            <ion-col>
+                <span class="text-subtitle">{{"DURATION" | translate}}</span>
+                <br />
+                <span class="text-content" *ngIf="bookingData.mode == 0">{{bookingData.stayType}} • {{bookingData.duration}} {{"HOUR(S)" | translate}}</span>
+                <span class="text-content" *ngIf="bookingData.mode == 1">{{bookingData.stayType}}</span>
+                <span class="text-content" *ngIf="bookingData.mode == 2">{{bookingData.duration}} {{"NIGHT(S)" | translate}}</span>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <span class="text-subtitle">Check In</span>
+                <br />
+                <span class="text-content" *ngIf="bookingData.mode != 2">{{bookingData.propDetail.checkIn | date:'d MMM y • H:mm'}}</span>
+                <span class="text-content" *ngIf="bookingData.mode == 2">{{bookingData.checkIn | date:'d MMM y'}}</span>
+            </ion-col>
+            <ion-col>
+                <span class="text-subtitle">{{"TOTAL_PRICE" | translate}}</span>
+                <br />
+                <span text-right *ngIf="bookingData.mode == 0" class="text-price">{{currencySymbol}} {{transitPrice * bookingData.roomQty - uniqueDigit| number:'1.0-0'}}</span>
+                <span text-right *ngIf="bookingData.mode == 1" class="text-price">{{currencySymbol}} {{hour24Price * bookingData.roomQty - uniqueDigit| number:'1.0-0'}}</span>
+                <span text-right *ngIf="bookingData.mode == 2" class="text-price">{{currencySymbol}} {{nightPrice * bookingData.roomQty - uniqueDigit| number:'1.0-0'}}</span>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <div class="separator-with-shadow">
+
+    </div>
+    <ion-grid padding>
+        <ion-row align-items-center>
+            <button class='hidden-button' ion-button (click)="paymethod(1)">
+            <ion-col class="text-header">
+                {{"TRANSFER" | translate}}
+            </ion-col>
+            <ion-col text-right>
+                &gt;
+          </ion-col>
+            </button>
+        </ion-row>
+        <ion-row>
+            <button class='hidden-button' ion-button (click)="paymethod(1)">
+            <ion-col>
+                <img class="payment-icon" src="assets/images/payment/bca.png" />
+            </ion-col>
+            </button>
+        </ion-row>
+    </ion-grid>
+    <div class="separator-with-shadow">
+
+    </div>
+    <ion-grid padding>
+        <ion-row align-items-center>
+            <button class='hidden-button' ion-button (click)="paymethod(2)">
+            <ion-col class="text-header">
+                {{"CREDIT_CARD" | translate}}
+            </ion-col>
+            <ion-col text-right>
+                &gt;
+              </ion-col>
+            </button>
+        </ion-row>
+        <ion-row>
+            <button class='hidden-button' ion-button (click)="paymethod(2)">
+            <ion-col>
+                <img class="payment-icon" src="assets/images/payment/visa.png" />&nbsp;
+                <img class="payment-icon" src="assets/images/payment/mastercard.png" />
+            </ion-col>
+            </button>
+        </ion-row>
+    </ion-grid>
+    <div class="separator-with-shadow">
+
+    </div>
+</ion-content>
